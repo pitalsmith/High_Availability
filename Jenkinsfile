@@ -2,37 +2,22 @@ pipeline {
     agent any
 
     stages {
-
         stage('Checkout') {
             steps {
                 checkout scm
             }
         }
 
-        stage('Debug Workspace') {
-            steps {
-                sh '''
-                pwd
-                ls -la
-                file nginx.conf || true
-                '''
-            }
-        }
-
         stage('Build Image') {
             steps {
-                sh '''
-                docker build -t high-availability-app .
-                '''
+                sh 'docker build -t high-availability-app .'
             }
         }
 
         stage('Deploy') {
             steps {
-                sh '''
-                docker compose down || true
-                docker compose up -d --build --scale app=3
-                '''
+                sh 'docker compose down || true'
+                sh 'docker compose up -d --build --scale app=3'
             }
         }
     }
