@@ -17,9 +17,9 @@ pipeline {
         
         stage('Deploy') {
             steps {
-              // Use the legacy hyphenated command
-                sh 'docker compose down --remove-orphans || true'
-                sh 'docker-compose up -d --build'
+                 // Use the legacy hyphenated command
+                sh '/usr/local/lib/docker/cli-plugins/docker-compose down || true'
+                sh '/usr/local/lib/docker/cli-plugins/docker-compose up -d --build'
             }
         }
     }
