@@ -1,18 +1,29 @@
-stage('Build Image') {
-    steps {
-        sh '''
-        cd $WORKSPACE
-        pwd
-        ls -la
+pipeline {
+    agent any
 
-        docker build -t high-availability-app .
+    stages {
 
-        docker compose down || true
-        docker compose up -d --build
-        '''
+        stage('Checkout') {
+            steps {
+                checkout scm
+            }
+        }
+
+        stage('Build Image') {
+            steps {
+                sh '''
+                pwd
+                ls -la
+
+                docker build -t high-availability-app .
+
+                docker compose down || true
+                docker compose up -d --build
+                '''
+            }
+        }
     }
 }
-
 
 
 
