@@ -1,19 +1,42 @@
-stage('Deploy') {
-    steps {
-        sh '''
-        set -e
+pipeline {
+    agent any
 
-        echo "DEBUG CHECK"
-        pwd
-        ls -la
-        file nginx.conf || true
+    stages {
 
-        docker compose down || true
-        docker compose up -d --build --scale app=3
-        '''
+        stage('Checkout') {
+            steps {
+                checkout scm
+            }
+        }
+
+        stage('Debug Workspace') {
+            steps {
+                sh '''
+                pwd
+                ls -la
+                file nginx.conf || true
+                '''
+            }
+        }
+
+        stage('Build Image') {
+            steps {
+                sh '''
+                docker build -t high-availability-app .
+                '''
+            }
+        }
+
+        stage('Deploy') {
+            steps {
+                sh '''
+                docker compose down || true
+                docker compose up -d --build --scale app=3
+                '''
+            }
+        }
     }
 }
-
 
 
 // pipeline {
