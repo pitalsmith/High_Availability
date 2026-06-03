@@ -1,0 +1,17 @@
+services:
+  # The Load Balancer
+  nginx:
+    image: nginx:alpine
+    ports:
+      - "8081:80"
+    volumes:
+      - ./nginx.conf:/etc/nginx/conf.d/default.conf:ro
+    depends_on:
+      - app
+  
+  # Your React Application
+  app:
+    image: high-availability-app
+    deploy:
+      replicas: 3 # Tells Docker to maintain 3 running instances
+    restart: unless-stopped

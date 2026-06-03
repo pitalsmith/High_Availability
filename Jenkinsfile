@@ -1,20 +1,22 @@
 pipeline {
     agent any
     stages {
+        stage('Checkout') {
+            steps {
+                checkout scm
+            }
+        }
         stage('Build Image') {
             steps {
-                // Build the image using the Dockerfile
+                // This builds the image locally so Compose can use it
                 sh 'docker build -t high-availability-app .'
             }
         }
         stage('Deploy') {
             steps {
-                // Stop and remove old container if it exists
-                sh 'docker stop high-availability-container || true'
-                sh 'docker rm high-availability-container || true'
-                
-                // Run the new container
-                sh 'docker run -d -p 8081:80 --name high-availability-container high-availability-app'
+                // This runs in the same workspace where the files were checked out
+                sh 'docker compose down'
+                sh 'docker compose up -d'
             }
         }
     }
