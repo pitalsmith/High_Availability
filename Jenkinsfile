@@ -17,7 +17,8 @@ pipeline {
         
         stage('Deploy') {
             steps {
-                // Use the modern plugin (no hyphen)
+                // We use 'docker' (the binary) and pass 'compose' as an argument
+                // This forces it to use the Docker Compose plugin, not a standalone binary.
                 sh 'docker compose down || true'
                 sh 'docker compose up -d --build'
             }
