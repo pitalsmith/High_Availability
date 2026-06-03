@@ -16,9 +16,15 @@ pipeline {
                 ls -la
 
                 docker build -t high-availability-app .
+                '''
+            }
+        }
 
+        stage('Deploy') {
+            steps {
+                sh '''
                 docker compose down || true
-                docker compose up -d --build
+                docker compose up -d --build --scale app=3
                 '''
             }
         }
