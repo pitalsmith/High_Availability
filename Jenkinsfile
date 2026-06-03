@@ -1,28 +1,19 @@
 pipeline {
     agent any
-
     stages {
-        stage('Checkout') {
-            steps {
-                checkout scm
-            }
-        }
-
-        stage('Build Image') {
-            steps {
-                sh 'docker build -t high-availability-app .'
-            }
-        }
-
         stage('Deploy') {
             steps {
-                sh 'docker compose down || true'
-                sh 'docker compose up -d --build --scale app=3'
+                // We use the SSH path we just verified
+                sh '''
+                    ssh -o StrictHostKeyChecking=no peter@172.19.171.143 "\
+                    cd /home/peter/Cloud/High_Availability && \
+                    docker compose down && \
+                    docker compose up -d --build --scale app=3"
+                '''
             }
         }
     }
 }
-
 
 // pipeline {
 //     agent any
