@@ -17,10 +17,11 @@ pipeline {
         
         stage('Deploy') {
             steps {
-                sh 'docker-compose down || true'
-                sh 'docker-compose up -d --build'
-                    }
+                // Use the modern plugin (no hyphen)
+                sh 'docker compose down || true'
+                sh 'docker compose up -d --build'
             }
+        }
     }
     
     post {
