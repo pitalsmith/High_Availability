@@ -17,11 +17,10 @@ pipeline {
         
         stage('Deploy') {
             steps {
-                 // Use the legacy hyphenated command
-                sh '/usr/local/lib/docker/cli-plugins/docker-compose down || true'
-                sh '/usr/local/lib/docker/cli-plugins/docker-compose up -d --build'
+                sh 'docker-compose down || true'
+                sh 'docker-compose up -d --build'
+                    }
             }
-        }
     }
     
     post {
