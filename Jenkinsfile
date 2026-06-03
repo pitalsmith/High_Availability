@@ -17,11 +17,9 @@ pipeline {
         
         stage('Deploy') {
             steps {
-                // We use 'docker compose' (v2). 
-                // We use || true on the down command so it doesn't fail 
-                // if the project isn't already running.
-                sh 'docker compose down || true'
-                sh 'docker compose up -d'
+              // Use the legacy hyphenated command
+                sh 'docker-compose down || true'
+                sh 'docker-compose up -d --build'
             }
         }
     }
