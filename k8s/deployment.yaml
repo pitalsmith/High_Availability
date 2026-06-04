@@ -7,14 +7,14 @@ spec:
   selector:
     matchLabels:
       app: my-app
-  template:
+  template:             # <--- This is the layer you are missing
     metadata:
       labels:
         app: my-app
-spec:
-  containers:
-  - name: my-app
-    image: high-availability-app:latest
-    imagePullPolicy: IfNotPresent
-    ports:
-    - containerPort: 80
+    spec:               # <--- This one is inside template
+      containers:
+      - name: my-app
+        image: high-availability-app:v2
+        imagePullPolicy: IfNotPresent
+        ports:
+        - containerPort: 80

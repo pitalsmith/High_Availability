@@ -9,7 +9,7 @@ function App() {
       
       {/* The Blue Deployment Indicator */}
       <div className="box blue-deployment">
-        <p>CURRENT VERSION: GREENN</p>
+        <p>CURRENT VERSION: GREEN</p>
       </div>
 
       <footer className="footer">
