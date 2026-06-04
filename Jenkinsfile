@@ -1,28 +1,25 @@
 pipeline {
     agent any
+    tools {
+        // This 'node22' must match the EXACT Name you typed in the Tools configuration
+        nodejs 'node22' 
+    }
     stages {
-        stage('Build') {
+        stage('Build & Dockerize') {
             steps {
+                sh 'node -v' // Debug: This will print the version in the logs
                 sh 'npm install'
                 sh 'npm run build'
-            }
-        }
-        stage('Docker Build & Push') {
-            steps {
+                
                 script {
-                    docker.withRegistry('', 'docker-hub-credentials-id') {
-                        def customImage = docker.build("your-username/high-availability-app:${env.BUILD_ID}")
-                        customImage.push()
-                        customImage.push("latest")
+                    docker.withRegistry('', 'docker-hub-creds') {
+                        def img = docker.build("your-username/high-availability-app:${env.BUILD_ID}")
+                        img.push()
+                        img.push("latest")
                     }
                 }
             }
         }
-        stage('Deploy to K8s') {
-            steps {
-                // This updates your deployment to use the new image
-                sh "kubectl set image deployment/my-app-deployment my-app=your-username/high-availability-app:${env.BUILD_ID}"
-            }
-        }
+        // ... rest of your stages
     }
 }
