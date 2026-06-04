@@ -1,53 +1,28 @@
 pipeline {
     agent any
     stages {
-        stage('Deploy') {
+        stage('Build') {
             steps {
-                // We use the SSH path we just verified
-                sh '''
-                    ssh -o StrictHostKeyChecking=no peter@172.19.171.143 "\
-                    cd /home/peter/Cloud/High_Availability && \
-                    docker compose down && \
-                    docker compose up -d --build --scale app=3"
-                '''
+                sh 'npm install'
+                sh 'npm run build'
+            }
+        }
+        stage('Docker Build & Push') {
+            steps {
+                script {
+                    docker.withRegistry('', 'docker-hub-credentials-id') {
+                        def customImage = docker.build("your-username/high-availability-app:${env.BUILD_ID}")
+                        customImage.push()
+                        customImage.push("latest")
+                    }
+                }
+            }
+        }
+        stage('Deploy to K8s') {
+            steps {
+                // This updates your deployment to use the new image
+                sh "kubectl set image deployment/my-app-deployment my-app=your-username/high-availability-app:${env.BUILD_ID}"
             }
         }
     }
 }
-
-// pipeline {
-//     agent any
-    
-//     stages {
-//         stage('Checkout') {
-//             steps {
-//                 checkout scm
-//             }
-//         }
-        
-//         stage('Build Image') {
-//             steps {
-//                 // Build the image so Docker Compose can use it
-//                 sh 'docker build -t high-availability-app .'
-//             }
-//         }
-        
-//         stage('Deploy') {
-//             steps {
-//                 // We use 'docker' (the binary) and pass 'compose' as an argument
-//                 // This forces it to use the Docker Compose plugin, not a standalone binary.
-//                 sh 'docker compose down || true'
-//                 sh 'docker compose up -d --build'
-//             }
-//         }
-//     }
-    
-//     post {
-//         always {
-//             echo 'Pipeline finished. Cleaning up...'
-//         }
-//         failure {
-//             echo 'Pipeline failed. Check the logs above.'
-//         }
-//     }
-// }

@@ -1,16 +1,22 @@
-# Stage 1: Build the React App
-FROM node:20-alpine AS build
+# Stage 1: Build the React app
+FROM node:22 AS build
 WORKDIR /app
+
+# Copy package files first to leverage Docker layer caching
 COPY package*.json ./
 RUN npm install
+
+# Copy the rest of the project files
 COPY . .
 RUN npm run build
 
-# Stage 2: Serve the App
-FROM node:20-alpine
-WORKDIR /app
-RUN npm install -g serve
-# This copies the compiled files from the 'build' stage above
-COPY --from=build /app/dist ./dist
+# Stage 2: Serve with Nginx
+FROM nginx:alpine
+# CHANGE THIS LINE TO 'dist'
+COPY --from=build /app/dist /usr/share/nginx/html
+
+# Expose port 80
 EXPOSE 80
-CMD ["serve", "-s", "dist", "-l", "80"]
+
+# Start Nginx
+CMD ["nginx", "-g", "daemon off;"]
