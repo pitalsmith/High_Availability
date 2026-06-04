@@ -7,14 +7,14 @@ spec:
   selector:
     matchLabels:
       app: my-app
-  template:             # <--- This is the layer you are missing
+  template:
     metadata:
       labels:
         app: my-app
-    spec:               # <--- This one is inside template
+    spec:
       containers:
       - name: my-app
-        image: high-availability-app:v2
-        imagePullPolicy: IfNotPresent
+        image: pitalsmith/high-availability-app:latest
+        imagePullPolicy: Always
         ports:
         - containerPort: 80
