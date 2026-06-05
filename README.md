@@ -60,25 +60,25 @@ To make your portfolio look professional, use these four specific screenshots. E
 
 ### **Visual Proof Section**
 
-> **[INSERT SCREENSHOT 1: GitHub Actions Dashboard]**
+> **1: GitHub Actions Dashboard** ![GitHub Actions Dashboard](src/assets/Git_Actions_1.JPG)
 > **Figure 1: Automated CI Pipeline**
 > * **Caption:** The "Build and Push" pipeline triggers automatically on every `git push`. The green checkmark confirms the code was successfully containerized and uploaded to Docker Hub without manual intervention.
 > 
 > 
 
-> **[INSERT SCREENSHOT 2: Docker Hub Tags]**
+> **2: Docker Hub Tags** ![Docker Hub Tags](src/assets/Docker_2.JPG)
 > **Figure 2: Cloud Registry Validation**
 > * **Caption:** Verification of the Docker image repository. This confirms that the latest version of the application is hosted in the cloud, making it accessible for the Kubernetes cluster to pull from anywhere.
 > 
 > 
 
-> **[INSERT SCREENSHOT 3: Rolling Update Terminal]**
+> **3: Rolling Update Terminal** ![Rolling Update Terminal](src/assets/Pods_3.JPG)
 > **Figure 3: Zero-Downtime Deployment**
 > * **Caption:** A split-screen view of the update process. The left terminal monitors pods (`kubectl get pods -w`), while the right terminal initiates the rollout (`kubectl rollout restart`). This demonstrates the graceful handoff where new pods replace old ones without interrupting service.
 > 
 > 
 
-> **[INSERT SCREENSHOT 4: Cluster Status]**
+> **4: Cluster Status** ![Cluster Status](src/assets/Cluster_Status_4.JPG)
 > **Figure 4: Highly Available Cluster**
 > * **Caption:** Confirmation of a healthy, "Ready" cluster. The `AGE` column proves the pods have been running consistently, and the status confirms that all 3 replicas are active, balanced, and ready to serve traffic.
 > 
