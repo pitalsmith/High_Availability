@@ -14,7 +14,7 @@ spec:
     spec:
       containers:
       - name: my-app
-        image: localhost/my-app:blue
+        image: localhost/my-app:blue 
         imagePullPolicy: IfNotPresent
         ports:
         - containerPort: 80
