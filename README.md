@@ -39,7 +39,7 @@ The architecture creates an automated feedback loop between my development envir
 4. **Configured Rollout Logic:** Implemented the deployment strategy to ensure Kubernetes pulls the latest image tag upon command, allowing for controlled version updates.
 
 ## 6. How to Run It
-Clone the repository: git clone [your-repo-link]
+Clone the repository: git clone https://github.com/pitalsmith/High_Availability.git
 
 Configure Secrets: Set DOCKERHUB_TOKEN in GitHub Repository Settings.
 
