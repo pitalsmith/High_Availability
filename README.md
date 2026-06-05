@@ -52,9 +52,6 @@ kubectl port-forward service/my-app-service 30080:80
 Deploy Updates: Push code changes to GitHub, then trigger the cluster refresh:
 kubectl rollout restart deployment/my-app-deployment
 
----
-
-To make your portfolio look professional, use these four specific screenshots. Each one tells a part of the "story" of your project—from the automation of the code to the live behavior of the cluster.
 
 ---
 
