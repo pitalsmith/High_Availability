@@ -1,0 +1,26 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Rollout
+metadata:
+  name: my-app-rollout
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: my-app # Must match the selectors in your services
+  template:
+    metadata:
+      labels:
+        app: my-app
+    spec:
+      containers:
+      - name: my-app
+        image: localhost/my-app:blue
+        imagePullPolicy: IfNotPresent
+        ports:
+        - containerPort: 80
+  strategy:
+    blueGreen: 
+      # These two services must be created separately in your cluster
+      activeService: my-app-service-active
+      previewService: my-app-service-preview
+      autoPromotionEnabled: false # Keeps it Green until you manually promote
