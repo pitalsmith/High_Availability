@@ -57,25 +57,25 @@ kubectl rollout restart deployment/my-app-deployment
 
 ### **Visual Proof Section**
 
-> **1: GitHub Actions Dashboard** ![GitHub Actions Dashboard](https://github.com/pitalsmith/High_Availability/blob/main/src/assets/Git_Actions_1.JPG)
+> **1: GitHub Actions Dashboard** ![GitHub Actions Dashboard](https://github.com/pitalsmith/High_Availability/blob/3cecf7fbf73c0c3f6c132d9df6629cf0437b90da/src/assets/Git_Actions_1.jpg)
 > **Figure 1: Automated CI Pipeline**
 > * **Caption:** The "Build and Push" pipeline triggers automatically on every `git push`. The green checkmark confirms the code was successfully containerized and uploaded to Docker Hub without manual intervention.
 > 
 > 
 
-> **2: Docker Hub Tags** ![Docker Hub Tags](https://github.com/pitalsmith/High_Availability/blob/main/src/assets/Docker_2.JPG)
+> **2: Docker Hub Tags** ![Docker Hub Tags](https://github.com/pitalsmith/High_Availability/blob/3cecf7fbf73c0c3f6c132d9df6629cf0437b90da/src/assets/Docker_2.png)
 > **Figure 2: Cloud Registry Validation**
 > * **Caption:** Verification of the Docker image repository. This confirms that the latest version of the application is hosted in the cloud, making it accessible for the Kubernetes cluster to pull from anywhere.
 > 
 > 
 
-> **3: Rolling Update Terminal** ![Rolling Update Terminal](https://github.com/pitalsmith/High_Availability/blob/main/src/assets/Pods_3.JPG)
+> **3: Rolling Update Terminal** ![Rolling Update Terminal](https://github.com/pitalsmith/High_Availability/blob/3cecf7fbf73c0c3f6c132d9df6629cf0437b90da/src/assets/Pods_3.jpg)
 > **Figure 3: Zero-Downtime Deployment**
 > * **Caption:** A split-screen view of the update process. The left terminal monitors pods (`kubectl get pods -w`), while the right terminal initiates the rollout (`kubectl rollout restart`). This demonstrates the graceful handoff where new pods replace old ones without interrupting service.
 > 
 > 
 
-> **4: Cluster Status** ![Cluster Status](https://github.com/pitalsmith/High_Availability/blob/main/src/assets/Cluster_Status_4.JPG)
+> **4: Cluster Status** ![Cluster Status](https://github.com/pitalsmith/High_Availability/blob/3cecf7fbf73c0c3f6c132d9df6629cf0437b90da/src/assets/Cluster_Status_4.jpg)
 > **Figure 4: Highly Available Cluster**
 > * **Caption:** Confirmation of a healthy, "Ready" cluster. The `AGE` column proves the pods have been running consistently, and the status confirms that all 3 replicas are active, balanced, and ready to serve traffic.
 > 
