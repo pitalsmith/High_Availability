@@ -78,8 +78,9 @@ kubectl rollout restart deployment/my-app-deployment
 > **4: Cluster Status** ![Cluster Status](https://github.com/pitalsmith/High_Availability/blob/3cecf7fbf73c0c3f6c132d9df6629cf0437b90da/src/assets/Cluster_Status_4.jpg)
 > **Figure 4: Highly Available Cluster**
 > * **Caption:** Confirmation of a healthy, "Ready" cluster. The `AGE` column proves the pods have been running consistently, and the status confirms that all 3 replicas are active, balanced, and ready to serve traffic.
-> 
-> 
+
+---
+*Maintained as part of the [Main Project Repository](https://github.com/pitalsmith/High_Availability.git)*
 
 
 ## 8. Key Takeaways
