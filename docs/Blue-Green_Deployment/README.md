@@ -31,4 +31,4 @@ Promoting a new version or reverting to a previous one is handled via atomic com
 * **Containerization:** Docker
 
 ---
-*Maintained as part of the [Main Project Repository](URL_TO_YOUR_MAIN_BRANCH_HERE)*
+*Maintained as part of the [Main Project Repository](https://github.com/pitalsmith/High_Availability.git)*
