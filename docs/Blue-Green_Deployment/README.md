@@ -17,7 +17,7 @@ The controller manages the lifecycle of the rollout, ensuring that the new versi
 ### 2. Side-by-Side Validation
 Using `kubectl port-forward`, I can verify the "Green" version in a sandbox environment at `localhost:9090` while the "Blue" version continues to run at `localhost:8080`.
 ![kubectl port-forward](https://github.com/pitalsmith/High_Availability/blob/0d8ea22c9b1d13efc8325df49ac3990779f4dc9a/src/assets/port_forwarding_2.jpg)
-![Browser Output](https://github.com/pitalsmith/High_Availability/blob/0d8ea22c9b1d13efc8325df49ac3990779f4dc9a/src/assets/Blue-Green_3.JPG)
+![Browser Output](https://github.com/pitalsmith/High_Availability/blob/1dbbfe1faa7c2e1f535acd78df14318ba6b0d539/src/assets/Blue-Green_3i.png)
 
 ### 3. Traffic Promotion & Rollback
 Promoting a new version or reverting to a previous one is handled via atomic commands, ensuring system stability:
