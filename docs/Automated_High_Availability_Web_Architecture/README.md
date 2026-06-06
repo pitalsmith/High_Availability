@@ -79,8 +79,6 @@ kubectl rollout restart deployment/my-app-deployment
 > **Figure 4: Highly Available Cluster**
 > * **Caption:** Confirmation of a healthy, "Ready" cluster. The `AGE` column proves the pods have been running consistently, and the status confirms that all 3 replicas are active, balanced, and ready to serve traffic.
 
----
-*Maintained as part of the [Main Project Repository](https://github.com/pitalsmith/High_Availability.git)*
 
 
 ## 8. Key Takeaways
@@ -88,4 +86,7 @@ kubectl rollout restart deployment/my-app-deployment
 * **Reliability:** The system is self-healing; if one pod fails, two others remain to serve traffic.
 * **Efficiency:** Automated builds mean I spend zero time manually uploading images.
 * **Scalability:** By changing one number (`replicas: 3` to `replicas: 10`), the system can scale horizontally to meet increased demand.
+
+---
+*Maintained as part of the [Main Project Repository](https://github.com/pitalsmith/High_Availability.git)*
 
