@@ -12,11 +12,12 @@ The setup utilizes separate `activeService` and `previewService` objects to ensu
 
 ### 1. Rollout Status
 The controller manages the lifecycle of the rollout, ensuring that the new version is healthy before any traffic shift occurs.
-*(Insert screenshot of `kubectl argo rollouts get rollout my-app-rollout` here)*
+![kubectl argo rollouts](https://github.com/pitalsmith/High_Availability/blob/0d8ea22c9b1d13efc8325df49ac3990779f4dc9a/src/assets/Agro_Rollout_1.jpg)
 
 ### 2. Side-by-Side Validation
 Using `kubectl port-forward`, I can verify the "Green" version in a sandbox environment at `localhost:9090` while the "Blue" version continues to run at `localhost:8080`.
-*(Insert screenshot of side-by-side browser windows here)*
+![kubectl port-forward](https://github.com/pitalsmith/High_Availability/blob/0d8ea22c9b1d13efc8325df49ac3990779f4dc9a/src/assets/port_forwarding_2.jpg)
+![Browser Output](https://github.com/pitalsmith/High_Availability/blob/0d8ea22c9b1d13efc8325df49ac3990779f4dc9a/src/assets/Blue-Green_3.JPG)
 
 ### 3. Traffic Promotion & Rollback
 Promoting a new version or reverting to a previous one is handled via atomic commands, ensuring system stability:
