@@ -6,7 +6,7 @@ spec:
   replicas: 2
   selector:
     matchLabels:
-      app: my-app # Must match the selectors in your services
+      app: my-app
   template:
     metadata:
       labels:
@@ -14,13 +14,26 @@ spec:
     spec:
       containers:
       - name: my-app
-        image: localhost/my-app:blue 
+        image: localhost/my-app:new-version
         imagePullPolicy: IfNotPresent
         ports:
         - containerPort: 80
+        # --- ADD THESE PROBES ---
+        livenessProbe:
+          httpGet:
+            path: /
+            port: 80
+          initialDelaySeconds: 5
+          periodSeconds: 10
+        readinessProbe:
+          httpGet:
+            path: /
+            port: 80
+          initialDelaySeconds: 5
+          periodSeconds: 5
+        # ------------------------
   strategy:
     blueGreen: 
-      # These two services must be created separately in your cluster
       activeService: my-app-service-active
       previewService: my-app-service-preview
-      autoPromotionEnabled: false # Keeps it Green until you manually promote
+      autoPromotionEnabled: false
