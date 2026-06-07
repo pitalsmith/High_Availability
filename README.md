@@ -1,4 +1,4 @@
-# Project: Kubernetes Observability & High-Availability Infrastructure
+# Project: End-to-End DevOps Deployment & Infrastructure Architecture
 
 ## Project Modules
 
