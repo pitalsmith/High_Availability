@@ -69,4 +69,3 @@ During the integration phase, we encountered two significant blockers:
 In modern cloud-native environments, visibility is not optional it is a requirement. This project demonstrates the critical shift from "black-box" deployments to proactive system management. By combining High Availability (HA) with deep observability, I have built an architecture where engineers can detect bottlenecks, monitor resource saturation, and perform version rollouts with zero risk to the end-user.
 
 ---
-*Maintained as part of the [Main Project Repository](https://github.com/pitalsmith/High_Availability.git)*
