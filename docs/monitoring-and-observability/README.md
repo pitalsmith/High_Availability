@@ -15,7 +15,7 @@ In this project, I engineered a production-grade observability and deployment ec
 
 ---
 
-## What We Achieved
+## What I Achieved
 
 * **Automated Monitoring:** Deployed a full-stack observability suite via Helm, providing deep insights into cluster performance.
 * **Zero-Downtime Releases:** Configured Blue-Green deployments to ensure continuous service availability during application updates.
